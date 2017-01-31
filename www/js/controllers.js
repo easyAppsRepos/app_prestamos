@@ -199,14 +199,24 @@ $scope.clienteInfo={};
             }
 
         $scope.sendSMS = function() {
+
+          console.log('enSMS'); 
+
           var sendto = '50672519283';
           var textmsg = 'Gracias por su prestamoe de $0000. Esperamos le sea de ayuda';
+
+          alert(sendto);
+
           if(sendto.indexOf(";") >=0) {
             sendto = sendto.split(";");
             for(i in sendto) {
               sendto[i] = sendto[i].trim();
             }
           }
+
+
+          alert(sendto);
+          
           if(SMS) SMS.sendSMS(sendto, textmsg, function(){}, function(str){alert(str);});
         }
             
