@@ -51,24 +51,38 @@
   
 </div>
 	<div style="text-align: center;">
-		<div ng-repeat='imagen in imagenes'>
-			<img style='max-width: 100%' src="data:image/jpeg;base64,{{imagen.imagenData}}">	
-			<select ng-model='tipoImagen' ng-change='cambiarTipo(tipoImagen, $index)' class="ion-input-select" style="display: block;margin: auto;margin-top: 10px;margin-bottom: 20px;">
 
-			<option value='0' >Titulo Vehiculo</option>
-			<option value='1'>Identificacion del Cliente</option>
-			<option value='2' selected>Foto</option>
-			<option value='3' >Contrato</option>
-			</select>
+
+		<div ng-repeat='imagen in imagenes' style="margin-top: 20px;padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;background-color: lightgray">
+
+
+
+  <button   ng-click='quitarFoto($index)' class="button-small button-dark" style="position: absolute;right: 0;margin-right: calc(5% + 10px)">
+  <i class='ion-android-cancel icon' style="margin-right:5px"></i>Eliminar
+  </button>
+
+
+			<img style='max-width: 100%' src="data:image/jpeg;base64,{{imagen.imagenData}}">	
+
+        <div>
+      			Tipo de imagen : <select  ng-model='tipoImagen' ng-change='cambiarTipo(tipoImagen, $index)' class="ion-input-select" style="margin: auto;margin-top: 10px;">
+
+      			<option value='0' >Titulo Vehiculo</option>
+      			<option value='1'>Identificacion del Cliente</option>
+      			<option value='2' selected>Foto</option>
+      			<option value='3' >Contrato</option>
+      			</select>
+
+        </div>
 		</div>
 	</div>
 
 <div style="text-align:center;margin-top: 30px;margin-bottom: 30px">
-	<button ng-click='subirFoto()' class="button button-dark" style="padding-left: 15px;padding-right: 15px;">
+	<button ng-disabled='!clienteInfo.numeroTelefono' ng-click='subirFoto()' class="button button-dark" style="padding-left: 15px;padding-right: 15px;">
 	<i class='ion-android-add-circle icon' style="margin-right: 5px;font-size: 30px;"></i>Agregar Foto
 	</button>
 </div>
-<button ng-click='sendSMS()' class="button button-full button-positive">
+<button ng-disabled='!clienteInfo.numeroTelefono' ng-click='sendSMS()' class="button button-full button-positive">
   Terminar
 </button>
 

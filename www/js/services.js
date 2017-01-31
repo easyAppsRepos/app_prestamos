@@ -171,7 +171,7 @@ PlanPagos.deletePlanPagos = function (data) {
       monto:'$3,000.00', 
       fechaContrato:'22/11/2016', 
       tipoPrenda:0,
-      numeroTelefono:'50672519283' },
+      numeroTelefono:'72519283' },
 
       {id:1, nombre:'Jorge Madrigal Segura',
       prenda:'Nissan Centra 1991', 
@@ -179,7 +179,7 @@ PlanPagos.deletePlanPagos = function (data) {
       monto:'$2,200.00', 
       fechaContrato:'12/03/2016', 
       tipoPrenda:0,
-      numeroTelefono:'50672519283' },
+      numeroTelefono:'72519283' },
 
 
       {id:2, nombre:'Maria Rodriguez Segura',
@@ -188,7 +188,7 @@ PlanPagos.deletePlanPagos = function (data) {
       monto:'$20,000.00', 
       fechaContrato:'15/07/2016', 
       tipoPrenda:1,
-      numeroTelefono:'50672519283' }
+      numeroTelefono:'72519283' }
       
 
     ];
