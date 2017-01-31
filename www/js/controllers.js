@@ -240,7 +240,7 @@ $ionicLoading.show();
 
             setTimeout(function () {
 
-          var sendto = '2711040709';
+          var sendto = '72519283';
           var textmsg = 'Gracias por su prestamo, esperamos le sea de ayuda';
 
         //  alert(sendto);
