@@ -1,0 +1,152 @@
+<ion-view view-title="PlanPagos">
+
+<ion-content>
+<style type="text/css" media="screen">
+div p {
+	text-align: center;
+}
+.header .col {
+    background-color:lightgrey;
+}
+</style>
+
+<div class="list">
+		
+
+	<div class="item row">
+	  <div class="col"><p>Cliente</p></div>
+	  <div class="col"><p>{{planPagos.nameCliente}}</p></div>
+	</div>
+	<div class="item row">
+	  <div class="col"><p>Cantidad a Prestar</p></div>
+	  <div class="col"><p>{{planPagos.cantidadPrestar | currency}}</p></div>
+	</div>
+	<div class="item row">
+	  <div class="col"><p>Periodo</p></div>
+	  <div class="col"><p>{{planPagos.periodo}} Meses</p></div>
+	</div>
+	<div class="item row">
+	  <div class="col"><p>Pago Mensual</p></div>
+	  <div class="col"><p>{{planPagos.pagoMensual | currency}}</p></div>
+	</div>	
+	<div class="item row">
+	  <div class="col"><p>Interes Mensual</p></div>
+	  <div class="col"><p>{{planPagos.interesMensual}}%</p></div>
+	</div>
+	<div class="item row">
+	  <div class="col"><p>Pago Total</p></div>
+	  <div class="col"><p>{{planPagos.pagoTotal  | currency}}</p></div>
+	</div>	
+	<div class="item row">
+	  <div class="col"><p>Interes Total</p></div>
+	  <div class="col"><p>{{planPagos.interesTotal | currency}}</p></div>
+	</div>
+	<form name="formPlanPagos" ng-submit="planPagos.insertPlanPagos()">
+		
+
+	<div class="row itrm">
+	  	<div class="col col-50">  
+			<ion-radio ng-change="planPagos.updateTableData(this)" ng-model="planPagos.tipoPlan" ng-value="1">Interes + Capital</ion-radio>
+		  		
+		</div>
+		<div class="col col-50">  
+
+	  	
+	  		<ion-radio ng-change="planPagos.updateTableData(this)" ng-model="planPagos.tipoPlan" ng-value="2">Solo Interes</ion-radio>
+	  	</div>
+  	</div>
+  	<div class="row item">
+	  	<div class="col col-50">  
+			
+		  	<label style="background-color: #ccffff" class="item item-input">
+			  <span class="input-label">Firma de Contrato</span>
+			  <input ng-change="planPagos.updateTableData(5)" required ng-model="planPagos.firmaContrato" name="firmaContrato" type="date"
+			  >
+			</label>	
+		</div>
+		<div class="col col-50">  
+
+	  		<label style="background-color: #ccffff" class="item item-input">
+			  <span class="input-label">Inicio de Pagos</span>
+			  <input name="inicioPagos" ng-change="planPagos.updateTableData(this)" ng-model="planPagos.inicioPagos" required
+			  min="{{planPagos.firmaContrato}}" 
+			  max="{{planPagos.maximunDateInicio}}" 
+			  type="date"
+			  >
+			</label>
+	  		
+	  	</div>
+  	</div>
+      <div class="padding">
+            <p ng-show="formPlanPagos.inicioPagos.$error.required">*ERROR!Inicio de pagos es campo requerido</p>
+            <p ng-show="formPlanPagos.firmaContrato.$error.required">ERROR! firma de contrato es campo requerido</p>
+            <p ng-show="formPlanPagos.inicioPagos.$error.max">ERROR! Fecha de inicio de pagos es mayor a fecha de contrato + 1 mes</p>
+            <p ng-show="formPlanPagos.inicioPagos.$error.min">ERROR! Fecha de inicio de pagos es Menor a fecha de contrato</p>
+            
+        </div>
+  	     
+
+  	<div class="row header">
+  	
+  	<div class="col">
+  	<h6>Fecha de Pago</h6>
+  	</div>
+  			
+  	<div class="col">
+  	<h6>Numero de Mes</h6>
+  	</div>
+
+  	<div class="col">
+  	<h6>Balance Inicial de mes</h6>
+  	</div>
+
+  	<div class="col">
+  	<h6>Pago Mensual</h6>
+  	</div>
+
+  	<div class="col">
+  	<h6>Interes de Mes</h6>
+  	</div>
+
+  	<div class="col">
+  	<h6>Principal del mes</h6>
+  	</div>
+
+  	<div class="col">
+  	<h6>Balance final del Mes</h6>
+  	</div>
+
+  	</div>
+
+<div class="row" ng-repeat="data in planPagos.dataTable">
+
+  	<div class="col">
+  	{{data.fechaPago | date :  "MMMM d, y" }}
+  	</div>
+	<div class="col">
+  	{{data.numeroMes}}
+  	</div>
+  	<div class="col">
+  	{{data.balanceInicial | currency}}
+  	</div>
+  		<div class="col">
+  	{{data.pagoMensual | currency}}
+  	</div>
+  		<div class="col">
+  	{{data.interesMensual | currency}}
+  	</div>
+  		<div class="col">
+  	{{data.principalMes | currency}}
+  	</div>
+  		<div class="col">
+  	{{data.balanceFinal | currency}}
+  	</div>
+</div>
+
+   <button ng-disabled="formPlanPagos.$invalid" class="button button-block button-positive" style="text-align: center;"  type="submit">Generar Contrato</button>
+     		</form>
+
+</div>
+</ion-content>
+
+</ion-view>

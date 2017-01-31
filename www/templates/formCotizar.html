@@ -1,0 +1,57 @@
+<ion-view view-title="cotizar">
+
+<ion-content>
+
+<div class="list">
+<form name="formCotizar">
+
+  <label style="text-align: center;" class="item item-input ">
+    <span class="input-label">Cliente</span>
+    <input ng-model="cotizar.nameCliente" type="text" >
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Cantidad a Prestar</span>
+    <input ng-change="calcularCuota()" ng-model="cotizar.cantidadprestar" type="number" placeholder="$">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Periodo(meses)</span>
+    <input ng-change="calcularCuota()" ng-model="cotizar.periodo" type="number" placeholder="meses">
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Interes Mensual</span>
+    <input ng-change="calcularCuota()" ng-model="cotizar.interesMensual" type="number" max="100" ng-max="100" placeholder="%">
+  </label>
+  <div class="row">
+  	<div  class="col">  
+  		<h3 style="text-align: center;" >Tipo Plan de Pagos</h3>
+	</div>
+  </div>
+  <div class="row">
+  	<div class="col col-50">  
+	<ion-radio ng-click="calcularCuota()" ng-model="cotizar.tipoPlan" ng-value="1">Interes + Capital</ion-radio>
+	  		
+	</div>
+	<div class="col col-50">  
+
+  	
+  			<ion-radio ng-click="calcularCuota()"  ng-model="cotizar.tipoPlan" ng-value="2">Solo Interes</ion-radio>
+  	</div>
+  </div>
+
+	<h4 style="text-align: center;">Pago Mensual</h4>
+
+	
+	<h3 style="text-align: center;">{{cotizar.pagomensual | currency}}</h3>
+	<div style="text-align: center;">
+		<button ng-disabled="formCotizar.$invalid" ng-click="cotizar.insertCotizacion()"class="button button-large button-positive">
+		Ver Plan de Pagos
+		</button>
+	</div>
+	</div>
+
+</form>
+</div>
+
+</ion-content>
+
+</ion-view>

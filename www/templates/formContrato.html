@@ -1,0 +1,54 @@
+<ion-view view-title="Contrato">
+
+<ion-content>
+
+<div class="list">
+		
+
+	<div class="item row">
+	  <div class="col"><p>Cliente</p></div>
+	  <div class="col"><p>{{contrato.nameCliente}}</p></div>
+	</div>
+
+	<div class="item row">
+	  <div class="col"> 
+		   <label class="item item-input item-select">
+	    <span class="input-label">Acredor:</span>
+	    <select 
+	      ng-model="users.selected.id" ng-change="changueUser(user)">
+	     <option ng-repeat="user in users.users" value="{{user.id}}"> {{user.username}}</option>
+	 
+	    </select>
+	  </label>	
+  </div>
+	</div>
+</div>
+    <div class="list">
+    <div class="item row">
+	  <div class="col"><button ng-click="print()" class="button button-small icon-left ion-printer button-positive">
+  Imprimir
+</button></div>
+	   <div class="col">
+<a ng-click="saveUser()" class=" button button-icon icon ion-upload"> Guardar</a>
+</div>
+	</div>
+    </div>
+      <form ng-controller="ContratoCtrl"  >
+    <textarea  class="mceEditor" id="tinymceContrato" style="height: 500px" ui-tinymce="tinymceOptions" data-ng-model="tinymceModel" name="content">
+
+    </textarea>
+   
+    <div class="list">
+    <div class="item row">
+	  <div class="col"><button ng-click="print()" class="button button-small icon-left ion-printer button-positive">
+  Imprimir
+</button></div>
+	   <div class="col">
+<a ng-click="saveUser()" class=" button button-icon icon ion-upload"> Guardar</a>
+</div>
+	</div>
+    </div>
+       </form>
+</ion-content>
+
+</ion-view>

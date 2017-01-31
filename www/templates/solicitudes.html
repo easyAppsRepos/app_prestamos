@@ -1,0 +1,25 @@
+<ion-view view-title="Solicitudes">
+
+<ion-content>
+    <label class="item item-input" >
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Buscar" data-ng-model="searchSolicitud">
+    </label>
+
+
+	<ion-list>
+	  <ion-item ui-sref="app.solicitar.solicitar({id_cliente:solicitud.id_cliente})" ng-repeat="solicitud in solicitudes | filter:searchSolicitud">
+	   <i class="icon ion-person-stalker"></i> 
+	   {{solicitud.name}}
+	     <span style="float: right;" class="text-note">${{solicitud.monto}}</span>
+	  </ion-item>
+	</ion-list>
+
+
+
+
+
+  
+</ion-content>
+
+</ion-view>

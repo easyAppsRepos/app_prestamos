@@ -1,0 +1,85 @@
+<ion-view view-title="Captura de Imagenes">
+
+<ion-content>
+
+
+<div class="list">
+
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="ID" ng-model='idCliente'>
+    </label>
+    <button class="button button-small" ng-click='buscar(idCliente)' >
+      
+     Buscar
+    </button>
+  </div>
+
+</div>
+
+
+<div style="width:90%; margin-left:5%;padding-bottom: 30px">
+
+<div style='margin-top: 5px' class="row">
+    <div class="col-33">Cliente</div>
+  <div style='background-color: #eee;' class="col col-67">{{clienteInfo.nombre}}</div>
+</div>
+
+<div style='margin-top: 5px' class="row">
+    <div class="col-33">Prenda</div>
+  <div style='background-color: #eee;' class="col col-67">{{clienteInfo.prenda}}</div>
+</div>
+
+<div style='margin-top: 5px' class="row">
+    <div class="col-33">Acredor</div>
+  <div style='background-color: #eee;' class="col col-67">{{clienteInfo.acredor}}</div>
+</div>
+
+<div style='margin-top: 5px' class="row">
+    <div class="col-33">Monto</div>
+  <div style='background-color: #eee;' class="col col-67">{{clienteInfo.monto}}</div>
+</div>
+
+<div style='margin-top: 5px' class="row">
+    <div class="col-33">Fecha Contrato</div>
+  <div style='background-color: #eee;' class="col col-67">{{clienteInfo.fechaContrato}}</div>
+</div>
+
+<div class="row">
+    
+  <ion-checkbox ng-show='clienteInfo.tipoPrenda == 0 ' style='border: none !important;' ng-model="filter.red">Copia de llave del vehiculo</ion-checkbox>
+  
+</div>
+	<div style="text-align: center;">
+		<div ng-repeat='imagen in imagenes'>
+			<img style='max-width: 100%' src="data:image/jpeg;base64,{{imagen.imagenData}}">	
+			<select ng-model='tipoImagen' ng-change='cambiarTipo(tipoImagen, $index)' class="ion-input-select" style="display: block;margin: auto;margin-top: 10px;margin-bottom: 20px;">
+
+			<option value='0' >Titulo Vehiculo</option>
+			<option value='1'>Identificacion del Cliente</option>
+			<option value='2' selected>Foto</option>
+			<option value='3' >Contrato</option>
+			</select>
+		</div>
+	</div>
+
+<div style="text-align:center;margin-top: 30px;margin-bottom: 30px">
+	<button ng-click='subirFoto()' class="button button-dark" style="padding-left: 15px;padding-right: 15px;">
+	<i class='ion-android-add-circle icon' style="margin-right: 5px;font-size: 30px;"></i>Agregar Foto
+	</button>
+</div>
+<button ng-click='sendSMS()' class="button button-full button-positive">
+  Terminar
+</button>
+
+
+</div>
+
+
+
+
+
+  
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,167 @@
+<ion-view view-title="solicitud de Prestamo">
+  <ion-content >
+      <form  name="formCliente" novalidate>
+
+      
+<div style="margin-top: 50px;" class="list">
+ <!--
+
+  -->
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Cliente</span>
+    <input type="text" name="name" ng-model="cliente.name" placeholder="name" ng-minlength="3" required>
+  </label>
+  <!--
+
+  -->
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Apellido</span>
+    <input type="text" name="apellido" ng-model="cliente.apellido" placeholder="apellido" ng-minlength="3" required>
+  </label>
+   <!--
+
+  -->
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Telefono para notificaciones</span>
+    <input type="number" name="telefono" ng-model="cliente.telefono" placeholder="telefono" ng-minlength="4" required>
+  </label>
+     <!--
+
+  -->
+    <label class="item item-input item-stacked-label">
+    <div class="input-label">
+      Buscar Domicilio
+    </div>
+
+  <input places-auto-complete size=80
+    ng-model="vm.address"
+    component-restrictions="{country:'us'}"
+    types="geocode"
+    ng-focus="vm.disableTap($event)"
+    on-place-changed="vm.placeChanged()" /> 
+  </label>
+     <!--
+
+  -->
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Calle y Numero</span>
+    <input type="text" name="calle_numero" ng-model="cliente.calle_numero" placeholder="Calle y numero">
+  </label>
+  
+   <!--
+
+  -->
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Ciudad</span>
+    <input type="text" name="ciudad" ng-model="cliente.ciudad" placeholder="Ciudad">
+  </label>
+     <!--
+
+  -->
+  <div class="row item">
+  <label class=" col col-70 item-input item-select">
+    <div class="input-label">
+     Estado
+    </div>
+    <select ng-model=states.selected.id>
+      <option ng-repeat="state in states.data" value="{{state.id}}"> {{state.name}}</option>
+    
+    </select>
+  </label>
+    
+    <label class=" col col-30 item-input item-stacked-label">
+    <span class="input-label">Zip</span>
+    <input type="number" name="zip" ng-model="cliente.zip" placeholder="zip">
+  </label> 
+       	
+       </div>
+   <!--
+
+  -->
+
+
+    <ng-map center="[40.74, -74.18]"></ng-map>
+
+  	   <!--
+
+  -->
+
+	<ion-toggle class="item" ng-model="tipoPrenda" ng-change="toggleChange()" toggle-class="toggle-calm">Auto / Otro</ion-toggle>
+   <!--
+
+  -->
+<div class="item" ng-if="!tipoPrenda" >
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Marca, Modelo y Año</span>
+    <input type="text" name="marca_modelo" ng-model="cliente.marca_modelo" placeholder="marca y modelo">
+  </label>	
+    <label class="item item-input item-stacked-label">
+    <span class="input-label">Vin</span>
+    <input type="text" name="vin" ng-model="cliente.vin" placeholder="vin">
+  </label>	
+</div >
+	
+   <!--
+
+  -->
+<div class="item" ng-if="tipoPrenda">
+	  <label class="item item-input item-stacked-label">
+    <span class="input-label">Prenda</span>
+    <input type="text" name="prenda" ng-model="cliente.prenda" placeholder="prenda">
+  </label>	
+    <label class="item item-input item-stacked-label">
+    <span class="input-label">Factura de prenda</span>
+    <input type="text" name="identificador" ng-model="cliente.identificador" placeholder="Factura de la prenda">
+  </label>
+
+
+</div>
+   <!--
+
+  -->
+  <label class="item item-input item-select">
+    <div class="input-label">
+     Acredor
+    </div>
+    <select 
+      ng-model="users.selected.id">
+     <option ng-repeat="user in users.users" value="{{user.id}}"> {{user.username}}</option>
+ 
+    </select>
+  </label>
+     <!--
+
+  -->
+<div class="row item">
+	
+
+	<button ng-class="{'buttoncalm': imgURIClient!==undefined}" type="button" class="col  button icon-left ion-ios-camera" ng-click="getPictureIdentificacionClient()">ID del Cliente</button>
+
+ 	<button ng-class="{'buttoncalm': imgURIClient!==undefined}" type="button" class="col  button icon-left ion-ios-camera" ng-click="getPictureIdentificacionMovil()">Titulo del vehiculo</button>
+</div>
+   <!--
+
+  -->
+  <br><br>
+     <!--
+
+  -->
+ <div class="row item">
+	
+	<img  class="col" ng-show="imgURIClient !== undefined" ng-src="{{imgURIClient}}" style="text-align: center">
+  	
+	<img ng-class="{'buttoncalm': imgURIMovil==undefined}" class="col"  ng-show="imgURIMovil !== undefined" ng-src="{{imgURIMovil}}" style="text-align: center">
+  
+  </div>
+   <!--
+
+  -->
+<button ng-disabled="formCliente.$invalid" ng-click="cotizar()"  class="item button button-block button-positive">
+Cotizar
+</button>
+ <br><br>
+  </div>
+  </form>
+</ion-content>
+       
+</ion-view>

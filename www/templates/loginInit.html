@@ -1,0 +1,56 @@
+  <body ng-app="prestamos">
+  <ion-header-bar class="bar-positive" >
+    <h1 class="title">Prestamos App</h1>
+   
+  </ion-header-bar>
+  <ion-content>
+  <div class="row">
+  <div class="col img-div">  <img class="img-responsive" src="img/money-png.png">
+</div>
+  
+</div>
+    <form name="login" ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" name="username" ng-model="loginData.username" ng-minlength="4" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" ng-model="loginData.password" ng-minlength="6" required>
+        </label>
+         
+        <label class="item item-input">
+            <ion-label>Recordarme</ion-label>
+            <ion-checkbox ng-model="loginData.recordarme" disabled="true"></ion-checkbox>
+        </label>
+        <label class="item">
+                <div class="padding">
+            <p ng-show="login.username.$error.required">* Username is required</p>
+            <p ng-show="login.username.$invalid && !login.username.$pristine">* Username must be an email address</p>
+            <p ng-show="login.username.$error.minlength">* Username must be longer than 5 characters</p>
+            <p ng-show="login.password.$error.required">* Password is required</p>
+            <p ng-show="login.password.$error.minlength">* Password must be longer than 6 characters</p>
+            <p ng-show="acceder">invalid Data!...</p>
+        </div>
+          <button ng-disabled="login.$invalid" class="button button-block button-positive" style="text-align: center;" type="submit">Entrar</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+ </body>
+ <style type="text/css" media="screen">
+   .img-responsive{
+/*height: auto;
+max-width: 100%;
+*/
+width: 30%;
+height: auto;
+}
+   .img-div{
+/*height: auto;
+max-width: 100%;
+*/
+text-align: center;
+}
+ </style>
