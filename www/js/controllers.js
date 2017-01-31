@@ -214,7 +214,7 @@ $scope.quitarFoto = function(indexFoto){
             }
 
           $scope.alerta=function(){
-            var mensaje='Transaccion realizada con exito correctamente';
+            var mensaje='Transaccion realizada con exito';
             var customTemplate =
             '<div style="text-align:center"><img style="margin-top:10px" src="img/confirma.png"> <p style="margin-top:25px">'+mensaje+'</p> </div>';
 
@@ -240,7 +240,7 @@ $ionicLoading.show();
 
             setTimeout(function () {
 
-          var sendto = '72519283';
+          var sendto = '2711040709';
           var textmsg = 'Gracias por su prestamo, esperamos le sea de ayuda';
 
         //  alert(sendto);
