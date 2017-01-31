@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.prestamosapp639758" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id          =     "com.ionicframework.prestamosapp639758"
+        version     =    "1.0.0"
+        xmlns       =    "http://www.w3.org/ns/widgets"
+        xmlns:gap   =    "http://phonegap.com/ns/1.0"
+        versionCode =   "1">
   <name>prestamosApp</name>
   <description>
-        An Ionic Framework and Cordova project.
+        prestamosApp
     </description>
   <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+      prestamosApp
     </author>
+      <access origin="*"/>
   <content src="index.html"/>
-<access origin="*://*/*" />
-<allow-intent href="http://*/*" />
-<allow-intent href="https://*/*" />
-<allow-intent href="tel:*" />
-<allow-intent href="sms:*" />
-<allow-intent href="mailto:*" />
-<allow-intent href="geo:*" />
 
-  <access uri="*" subdomains="true"/>
+  <preference name="phonegap-version" value="cli-6.3.0" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -30,34 +28,48 @@
   </feature>
 
 
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+
+<preference name="StatusBarOverlaysWebView" value="false" />
+<preference name="StatusBarStyle" value="lightcontent" />
+
+  <preference name="android-build-tool" value="gradle" />
+
+<plugin name="phonegap-plugin-push" version="1.5.3" source="npm">
+    <param name="SENDER_ID" value="22934730845" />
+</plugin>
 
 
-  <preference name="phonegap-version" value="cli-6.3.0" />
+
+<gap:plugin name="cordova-plugin-console"  source="npm" />
+<gap:plugin name="cordova-plugin-statusbar"  source="npm" />
+<gap:plugin name="cordova-plugin-inappbrowser"  source="npm" />
+<gap:plugin name="cordova-plugin-statusbar"  source="npm" />
 
 
-   <gap:plugin name="cordova-plugin-console"  source="npm" />
-    <gap:plugin name="cordova-plugin-statusbar"  source="npm" />
-     <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" />
-         <gap:plugin name="cordova-plugin-statusbar"  source="npm" />
+<gap:plugin name="cordova-plugin-splashscreen"  source="npm" />
+
+<gap:plugin name=" cordova-plugin-ionic-keyboard"  source="npm" />
+<gap:plugin name="cordova-plugin-sms"  source="npm" />
+
+<gap:plugin name="cordova-plugin-sms"  source="npm" />
+<gap:plugin name="cordova-plugin-camera"  source="npm" />
+<gap:plugin name="cordova-plugin-file-transfer"  source="npm" />
+
+<gap:plugin name="cordova-plugin-whitelist" version="1.3.1" source="npm" />
+<gap:plugin name="cordova-plugin-network-information" source="npm" version="1.0.1" />
+<gap:plugin name="cordova-plugin-webp" source="npm" version="2.2.0" />
+
+<gap:plugin name="cordova-plugin-app-event" source="npm" version="1.2.0"/>
+<gap:plugin name="cordova-plugin-device" source="npm" version="1.1.4" />
 
 
- <gap:plugin name="cordova-plugin-splashscreen"  source="npm" />
-
- <gap:plugin name=" cordova-plugin-ionic-keyboard"  source="npm" />
- <gap:plugin name="cordova-plugin-sms"  source="npm" />
-
- <gap:plugin name="cordova-plugin-sms"  source="npm" />
- <gap:plugin name="cordova-plugin-camera"  source="npm" />
-  <gap:plugin name="cordova-plugin-file-transfer"  source="npm" />
-  
-   <gap:plugin name="cordova-plugin-whitelist" version="1.3.1" source="npm" />
-  <gap:plugin name="cordova-plugin-network-information" source="npm" version="1.0.1" />
-    <gap:plugin name="cordova-plugin-webp" source="npm" version="2.2.0" />
- 
-      <gap:plugin name="cordova-plugin-app-event" source="npm" version="1.2.0"/>
-       <gap:plugin name="cordova-plugin-device" source="npm" version="1.1.4" />
-
-
+       <access origin="*" />
+<allow-intent href="*" />
+ <allow-navigation href="*" />
+<icon src="icon.png" />
 
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
@@ -79,4 +91,6 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
+
+
 </widget>
