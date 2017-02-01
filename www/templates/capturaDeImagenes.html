@@ -3,7 +3,7 @@
 <ion-content>
 
 
-<div class="list">
+
 
   <div class="item item-input-inset">
     <label class="item-input-wrapper">
@@ -15,12 +15,11 @@
     </button>
   </div>
 
-</div>
 
 
-<div style="width:90%; margin-left:5%;padding-bottom: 30px">
+<div style="">
 
-<div style='margin-top: 5px' class="row">
+<!-- <div style='margin-top: 5px' class="row">
     <div class="col-33">Cliente</div>
   <div style='background-color: #eee;' class="col col-67">{{clienteInfo.nombre}}</div>
 </div>
@@ -43,17 +42,51 @@
 <div style='margin-top: 5px' class="row">
     <div class="col-33">Fecha Contrato</div>
   <div style='background-color: #eee;' class="col col-67">{{clienteInfo.fechaContrato}}</div>
-</div>
+</div> -->
 
-<div class="row">
+
+
     
-  <ion-checkbox ng-show='clienteInfo.tipoPrenda == 0 ' style='border: none !important;' ng-model="filter.red">Copia de llave del vehiculo</ion-checkbox>
+
+  <div class="item row">
+    <div class="col"><p>Cliente</p></div>
+    <div class="col"><p>{{clienteInfo.nombre}}</p></div>
+  </div>
+  <div class="item row">
+    <div class="col"><p>Prenda</p></div>
+    <div class="col"><p>{{clienteInfo.prenda}}</p></div>
+  </div>
+  <div class="item row">
+    <div class="col"><p>Acredor</p></div>
+    <div class="col"><p>{{clienteInfo.acredor}}</p></div>
+  </div>
+  <div class="item row">
+    <div class="col"><p>Monto</p></div>
+    <div class="col"><p>{{clienteInfo.monto}}</p></div>
+  </div>  
+  <div class="item row">
+    <div class="col"><p>Fecha Contrato</p></div>
+    <div class="col"><p>{{clienteInfo.fechaContrato}}</p></div>
+  </div>
+
+
+
+
+<div ng-show='clienteInfo.tipoPrenda == 0 ' style='padding: 5px !important;text-align: center' class="item ">
+    
+  <ion-checkbox  style='color: #666;border: none !important;padding: 5px !important;' ng-model="filter.red">Copia de llave del vehiculo</ion-checkbox>
   
 </div>
+
+
 	<div style="text-align: center;">
 
 
-		<div ng-repeat='imagen in imagenes' style="margin-top: 20px;padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;background-color: lightgray">
+		<div ng-repeat='imagen in imagenes' style="margin-top: 20px;
+padding: 10px;
+width: 90%;
+margin-left: 5%;
+border: solid lightgray 1px;">
 
 
 
@@ -62,9 +95,25 @@
   </button>
 
 
-			<img style='max-width: 100%' src="data:image/jpeg;base64,{{imagen.imagenData}}">	
+			<img style='max-width: 100%;margin-bottom: 10px' src="data:image/jpeg;base64,{{imagen.imagenData}}">	
 
-        <div>
+            <div class="item row">
+              <div class="col"> 
+              <label style='border:none !important' class="item item-input item-select">
+              <span class="input-label">Tipo:</span>
+              <select ng-model='tipoImagen' ng-change='cambiarTipo(tipoImagen, $index)' >
+             <option value='0' >Titulo Vehiculo</option>
+            <option value='1'>Identificacion del Cliente</option>
+            <option value='2' selected>Foto</option>
+            <option value='3' >Contrato</option>
+
+              </select>
+              </label>  
+              </div>
+            </div>
+
+
+<!--         <div>
       			Tipo de imagen : <select  ng-model='tipoImagen' ng-change='cambiarTipo(tipoImagen, $index)' class="ion-input-select" style="margin: auto;margin-top: 10px;">
 
       			<option value='0' >Titulo Vehiculo</option>
@@ -73,18 +122,40 @@
       			<option value='3' >Contrato</option>
       			</select>
 
-        </div>
+        </div> -->
+
+
 		</div>
+
+
 	</div>
+
+
+<div style='width: 50%;
+margin-left: 25%;margin-top: 25px; margin-bottom: 25px' class="row item">
+  
+
+
+  <button ng-disabled='!clienteInfo.numeroTelefono' type="button" class="col  button icon-left ion-ios-camera" ng-click='subirFoto()'>Agregar Foto</button>
+</div>
+
+<!--
 
 <div style="text-align:center;margin-top: 30px;margin-bottom: 30px">
 	<button ng-disabled='!clienteInfo.numeroTelefono' ng-click='subirFoto()' class="button button-dark" style="padding-left: 15px;padding-right: 15px;">
 	<i class='ion-android-add-circle icon' style="margin-right: 5px;font-size: 30px;"></i>Agregar Foto
 	</button>
 </div>
-<button ng-disabled='!clienteInfo.numeroTelefono' ng-click='sendSMS()' class="button button-full button-positive">
+
+ <button  ng-click='sendSMS()' class="button button-full button-positive">
   Terminar
-</button>
+</button> -->
+
+
+   <button ng-disabled='!clienteInfo.numeroTelefono' class="button button-block button-positive" style="text-align: center;"   ng-click='sendSMS()' >Terminar
+
+   </button>
+
 
 
 </div>
