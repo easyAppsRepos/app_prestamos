@@ -394,7 +394,7 @@ $scope.imagenes=[];
 
       }else if (index===1) {
        
-          getImageSaveContact();
+            $scope.subirFoto();
     
      }
    }});
