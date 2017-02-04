@@ -33,8 +33,8 @@ config(function($stateProvider, $urlRouterProvider,$httpProvider) {
     }
   })
 
-    .state('app.capturaDeImagenes', {
-    url: '/capturaDeImagenes',      cache: false,
+      .state('app.capturaDeImagenes', {
+    url: '/capturaDeImagenes/:id_cliente',      cache: false,
 
     views: {
       'menuContent': {
@@ -45,13 +45,23 @@ config(function($stateProvider, $urlRouterProvider,$httpProvider) {
     }
   })
 
-
+      
   .state('app.home', {
       url: '/home',
       cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/home.html'
+        }
+      }
+    }) .state('app.home.confirmarContrato', {
+      url: '/confirmar/contrato',
+      cache: false,
+      views: {
+        'confirmar-tab': {
+          templateUrl: 'templates/confirmar-contrato.html',
+          controller: 'ConfirmarContratoCtrl'
+
         }
       }
     })

@@ -6,12 +6,12 @@
 // 'starter.controllers' is found in controllers.js
 var app =angular.module('prestamos', ['ionic', 'prestamos.controllers', 'prestamos.services','ngMap','ngCordova','ui.tinymce'])
 .constant('ApiEndpoint', {
-  url: 'http://172.17.0.1/prestamos/index.php',
+  url: 'http://prestamos.pymeteca.com.mx/index.php',
   urlPymeteca:'http://prestamos.pymeteca.com.mx/index.php',
-  urlLocal:'http://192.168.0.108/prestamos/index.php',
+  urlLocal:'http://192.168.0.105/prestamos/index.php',
   imageUrl: 'http://prestamos.pymeteca.com.mx',
   imageUrlPymeteca:'http://prestamos.pymeteca.com.mx',
-  imageUrlLocal:'http://192.168.0.108/prestamos'
+  imageUrlLocal:'http://192.168.0.105/prestamos'
 })
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {

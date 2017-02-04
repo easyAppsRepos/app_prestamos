@@ -5,15 +5,6 @@
 
 
 
-  <div class="item item-input-inset">
-    <label class="item-input-wrapper">
-      <input type="text" placeholder="ID" ng-model='idCliente'>
-    </label>
-    <button class="button button-small" ng-click='buscar(idCliente)' >
-      
-     Buscar
-    </button>
-  </div>
 
 
 
@@ -102,9 +93,9 @@ border: solid lightgray 1px;">
               <label style='border:none !important' class="item item-input item-select">
               <span class="input-label">Tipo:</span>
               <select ng-model='tipoImagen' ng-change='cambiarTipo(tipoImagen, $index)' >
-             <option value='0' >Titulo Vehiculo</option>
-            <option value='1'>Identificacion del Cliente</option>
-            <option value='2' selected>Foto</option>
+             <option value='2' >Titulo Vehiculo</option>
+            <option value='0'>Identificacion del Cliente</option>
+            <option value='1' selected="selected">Foto</option>
             <option value='3' >Contrato</option>
 
               </select>
@@ -135,11 +126,14 @@ border: solid lightgray 1px;">
 margin-left: 25%;margin-top: 25px; margin-bottom: 25px' class="row item">
   
 
-
-  <button ng-disabled='!clienteInfo.numeroTelefono' type="button" class="col  button icon-left ion-ios-camera" ng-click='subirFoto()'>Agregar Foto</button>
+    <button ng-disabled='!clienteInfo.numeroTelefono' type="button" class="col  button icon-left ion-ios-camera" ng-click='showActionSheetImage()'>Agregar Foto</button>
 </div>
 
 <!--
+  <button ng-disabled='!clienteInfo.numeroTelefono' type="button" class="col  button icon-left ion-ios-camera" ng-click='subirFoto()'>Agregar Foto</button>
+</div>
+
+
 
 <div style="text-align:center;margin-top: 30px;margin-bottom: 30px">
 	<button ng-disabled='!clienteInfo.numeroTelefono' ng-click='subirFoto()' class="button button-dark" style="padding-left: 15px;padding-right: 15px;">
@@ -166,5 +160,17 @@ margin-left: 25%;margin-top: 25px; margin-bottom: 25px' class="row item">
 
   
 </ion-content>
+
+<style type="text/css">
+  .bar-footer{color: #444 !important; height: auto !important;}
+</style>
+
+<ion-footer-bar ng-show='mostrarFooter' align-title="left" class="bar-energized">
+<i style='position: absolute;right: 0px;font-size: 30px;margin-right: 20px;margin-top: 5px' class='ion-alert-circled'></i>
+<div ng-bind-html="mensajeImagenes">
+  
+</div>
+</ion-footer-bar>
+
 
 </ion-view>

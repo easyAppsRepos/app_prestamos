@@ -1,20 +1,20 @@
 <ion-view view-title="Home">
  
 
-  <div class=" tabs-top tabs-background-dark tabs-color-light">
-    <div class="tabs">
-      <a class="tab-item " href="#">
-        Pendientes de Pago
-      </a>
-      <a class="tab-item active" href="#">
-        <p>Por confirmar Contrato</p>
-      </a>
-      <a class="tab-item" ui-sref="app.solicitar.solicitar">
-        Solicitar Nuevo
-      </a>
-    </div>
-  </div>
-  <ion-content >
-  </ion-content >
+      <ion-tabs class=" tabs-top tabs-background-dark tabs-color-light">
+
+        <ion-tab title="Pendientes de Pago"   ui-sref="app.home.pendientesPago">
+          <ion-nav-view name="pendientes-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Por confirmar Contrato" ui-sref="app.home.confirmarContrato" >
+          <ion-nav-view name="confirmar-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Solicitar Nuevo"  ui-sref="app.solicitar.solicitar">
+        </ion-tab>
+    
+      </ion-tabs>
+
 
 </ion-view>

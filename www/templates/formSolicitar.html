@@ -135,9 +135,9 @@
 <div class="row item">
 	
 
-	<button ng-class="{'buttoncalm': imgURIClient!==undefined}" type="button" class="col  button icon-left ion-ios-camera" ng-click="getPictureIdentificacionClient()">ID del Cliente</button>
+	<button ng-class="{'buttoncalm': imgURIClient!==undefined}" type="button" class="col  button icon-left ion-ios-camera" ng-click="showActionSheetImage('Cliente')">ID del Cliente</button>
 
- 	<button ng-class="{'buttoncalm': imgURIClient!==undefined}" type="button" class="col  button icon-left ion-ios-camera" ng-click="getPictureIdentificacionMovil()">Titulo del vehiculo</button>
+ 	<button ng-class="{'buttoncalm': imgURIMovil!==undefined}" type="button" class="col  button icon-left ion-ios-camera" ng-click="showActionSheetImage('Vehiculo')">Titulo del vehiculo</button>
 </div>
    <!--
 
@@ -150,7 +150,7 @@
 	
 	<img  class="col" ng-show="imgURIClient !== undefined" ng-src="{{imgURIClient}}" style="text-align: center">
   	
-	<img ng-class="{'buttoncalm': imgURIMovil==undefined}" class="col"  ng-show="imgURIMovil !== undefined" ng-src="{{imgURIMovil}}" style="text-align: center">
+	<img  class="col"  ng-show="imgURIMovil !== undefined" ng-src="{{imgURIMovil}}" style="text-align: center">
   
   </div>
    <!--

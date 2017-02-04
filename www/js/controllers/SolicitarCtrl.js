@@ -1,6 +1,6 @@
 app.controller('Solicitar', 
-  function($scope, $rootScope, $ionicLoading,NgMap,ApiEndpoint, $timeout,$cordovaFileTransfer,$cordovaCamera, $cordovaFile,Estates,Users, $ionicModal,Solicitar,$ionicPopup,$state,$stateParams) {
-  
+  function($scope, $rootScope,$cordovaImagePicker,$ionicActionSheet, $ionicPlatform,$ionicLoading,NgMap,ApiEndpoint, $timeout,$cordovaFileTransfer,$cordovaCamera, $cordovaFile,Estates,Users, $ionicModal,Solicitar,$ionicPopup,$state,$stateParams) {
+   
 
                 $scope.cliente={};
               var vm = this;   
@@ -532,29 +532,8 @@ console.log($rootScope);
 
   }
 
-  $scope.getPictureIdentificacionClient=function () {
-                       var optionsImages = {
-                    quality: 75,
-                    destinationType: Camera.DestinationType.DATA_URL,
-                    sourceType: Camera.PictureSourceType.CAMERA,
-                    allowEdit: true,
-                    encodingType: Camera.EncodingType.JPEG,
-                    targetWidth: 400,
-                    targetHeight: 300,
-                    popoverOptions: CameraPopoverOptions,
-                    saveToPhotoAlbum: false
-                };
-            
-   
-                    $cordovaCamera.getPicture(optionsImages).then(function (imageData) {
-                        $scope.imgURIClient = "data:image/jpeg;base64," + imageData;
-                    }, function (err) {
-                        // An error occured. Show a message to the user
-                    });
-              
-                
-  };
-  $scope.getPictureIdentificacionMovil=function () {
+
+  getPicture=function (ancla) {
                 
                    var optionsImages = {
                     quality: 75,
@@ -569,13 +548,87 @@ console.log($rootScope);
                 };
    
                     $cordovaCamera.getPicture(optionsImages).then(function (imageData) {
-                        $scope.imgURIMovil = "data:image/jpeg;base64," + imageData;
+                         if (ancla==="Vehiculo") {
+                           $scope.imgURIMovil = "data:image/jpeg;base64," + imageData;
+                          }else if (ancla==="Cliente") {
+                           $scope.imgURIClient = "data:image/jpeg;base64," + imageData;
+
+                          } 
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
               
                 
   };
+   getImageSaveContact = function(ancla) {       
+        // Image picker will load images according to these settings
+    var options = {
+        maximumImagesCount: 1, // Max number of selected images, I'm using only one for this example
+        width: 800,
+        height: 800,
+        quality: 80            // Higher is better
+    };
+ 
+    $cordovaImagePicker.getPictures(options).then(function (results) {
+                // Loop through acquired images
+        for (var i = 0; i < results.length; i++) {
+          if (ancla==="Cliente") {
+            $scope.imgURIClient = results[i];
 
+          }else if (ancla==="Vehiculo") {
+            $scope.imgURIMovil =  results[i];
 
+          }
+
+        }
+    }, function(error) {
+        console.log('Error: ' + JSON.stringify(error));    // In case of error
+    });
+};
+
+$scope.showActionSheetImage = function(ancla) {
+
+   // Show the action sheet
+   var hideSheet = $ionicActionSheet.show({
+     buttons: [
+       { text: 'Capturar Imagen' },
+       { text: 'Galeria de Imagenes' }
+     ],
+     destructiveText: 'Cerrar',
+     titleText: 'Obtener Imagen de '+ancla,
+     cancelText: 'Cancel',
+     cancel: function() {
+          // add cancel code..
+          return true;
+        },   
+        destructiveButtonClicked: function() {
+          return true;
+         },
+     buttonClicked: function(index) {
+      if (index===0) {
+        if (ancla==="Vehiculo") {
+          getPicture(ancla);
+        }else if (ancla==="Cliente") {
+          getPicture(ancla);
+
+        }
+        return true;
+
+      }else if (index===1) {
+        if (ancla==="Vehiculo") {
+          getImageSaveContact(ancla);
+        }else if (ancla==="Cliente") {
+          getImageSaveContact(ancla); 
+        }
+        return true;
+      }
+     }
+   });
+
+   // For example's sake, hide the sheet after two seconds
+  // $timeout(function() {
+    // hideSheet();
+ //  }, 2000);
+
+ };
 });

@@ -3,10 +3,16 @@ angular.module('prestamos.services', [])
   // Might use a resource here that returns a JSON array
   // Some fake testing data
   var urlBase=ApiEndpoint.url+"/clientes/listSolicitudes";
+  var urlBaseConfirmar=ApiEndpoint.url+"/clientes/listConfirmar";
+
   var Solicitudes = {};
   Solicitudes.listSolicitudes = function (data) {
      
        return $http.get(urlBase);
+      }; 
+       Solicitudes.listConfirmar = function (data) {
+     
+       return $http.get(urlBaseConfirmar);
       };
   return Solicitudes;
 }])
